@@ -7,6 +7,7 @@ import co.edu.uniquindio.biblioteca.model.Prestamo;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
@@ -16,6 +17,7 @@ public class Main {
         Biblioteca biblioteca = inicializarDatos();
         biblioteca.mostrarDisponiblidadLibro();
         biblioteca.mostarMiembrosMayores();
+        biblioteca.buscarMiembro(biblioteca.getListaMiembros());
 
     }
 

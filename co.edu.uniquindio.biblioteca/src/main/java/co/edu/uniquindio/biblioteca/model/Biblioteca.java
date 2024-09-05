@@ -72,11 +72,23 @@ public class Biblioteca {
             }
         }
     }
-
     public void mostarMiembrosMayores() {
         for(Miembro miembro : listaMiembros){
             if(miembro.getEdad()>40){
                 System.out.println("MIEMBRO MAYOR DE 40 AÑOS:"+"\n" + miembro);
+            }
+        }
+    }
+
+    public void buscarMiembro(List<Miembro>listaMiembros) {
+        int buscarId = 100019244;
+        for(Miembro miembros  : listaMiembros){
+            if(miembros.getId()==buscarId){
+                System.out.println("MIEMBRO ENCONTRADO: "+"\n" + miembros);
+                break;
+            }
+            else {
+                System.out.println("MIEMBRO NO ENCONTRADO");
             }
         }
     }
