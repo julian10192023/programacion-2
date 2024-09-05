@@ -15,6 +15,7 @@ public class Main {
 
         Biblioteca biblioteca = inicializarDatos();
         biblioteca.mostrarDisponiblidadLibro();
+        biblioteca.mostarMiembrosMayores();
 
     }
 

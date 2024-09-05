@@ -65,10 +65,18 @@ public class Biblioteca {
     public void mostrarDisponiblidadLibro() {
         for (Libro libro : listaLibros) {
             if (libro.isPrestado()==true){
-                System.out.println(libro.getTitulo()+ ":" + \n " NO ESTA DISPONIBLE");
+                System.out.println(libro.getTitulo()+ ":" + "\n" + "NO ESTA DISPONIBLE");
             }
             else{
-                System.out.println(libro.getTitulo() + " ESTA DISPONIBLE");
+                System.out.println(libro.getTitulo() + ":" + "\n" + "ESTA DISPONIBLE");
+            }
+        }
+    }
+
+    public void mostarMiembrosMayores() {
+        for(Miembro miembro : listaMiembros){
+            if(miembro.getEdad()>40){
+                System.out.println("MIEMBRO MAYOR DE 40 AÑOS:"+"\n" + miembro);
             }
         }
     }
