@@ -1,6 +1,8 @@
 package co.edu.uniquindio.biblioteca.model;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Prestamo {
     private Libro libro;

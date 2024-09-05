@@ -3,6 +3,7 @@ import co.edu.uniquindio.biblioteca.services.IgestionarInventario;
 
 public class Bibliotecario extends Empleado implements IgestionarInventario {
 
+
     public Bibliotecario(String nombre, int id) {
         super(nombre, id);
     }

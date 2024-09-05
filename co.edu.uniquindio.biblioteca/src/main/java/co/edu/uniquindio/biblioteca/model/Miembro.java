@@ -1,9 +1,13 @@
 package co.edu.uniquindio.biblioteca.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Miembro {
     private String nombre;
     private int id;
     private int edad;
+    private List<Prestamo>ListaPrestamosAsociados = new ArrayList<Prestamo>();
 
     public Miembro() {
     }
