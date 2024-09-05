@@ -62,4 +62,14 @@ public class Biblioteca {
         this.listaBibliotecarios = listaBibliotecarios;
     }
 
+    public void mostrarDisponiblidadLibro() {
+        for (Libro libro : listaLibros) {
+            if (libro.isPrestado()==true){
+                System.out.println(libro.getTitulo()+ ":" + \n " NO ESTA DISPONIBLE");
+            }
+            else{
+                System.out.println(libro.getTitulo() + " ESTA DISPONIBLE");
+            }
+        }
+    }
 }

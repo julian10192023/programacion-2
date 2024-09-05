@@ -3,7 +3,9 @@ package co.edu.uniquindio.biblioteca;
 import co.edu.uniquindio.biblioteca.model.Biblioteca;
 import co.edu.uniquindio.biblioteca.model.Libro;
 import co.edu.uniquindio.biblioteca.model.Miembro;
+import co.edu.uniquindio.biblioteca.model.Prestamo;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
@@ -12,6 +14,7 @@ public class Main {
     public static void main(String[] args) {
 
         Biblioteca biblioteca = inicializarDatos();
+        biblioteca.mostrarDisponiblidadLibro();
 
     }
 
@@ -75,6 +78,30 @@ public class Main {
         biblioteca.getListaMiembros().add(miembro3);
         biblioteca.getListaMiembros().add(miembro4);
         biblioteca.getListaMiembros().add(miembro5);
+
+        Prestamo prestamo1 = new Prestamo();
+        prestamo1.setLibro(libro1);
+        prestamo1.setMiembro(miembro1);
+        prestamo1.setInicioPrestamo(LocalDate.EPOCH);
+        prestamo1.setFinPrestamo(LocalDate.now());
+
+        Prestamo prestamo2 = new Prestamo();
+        prestamo2.setLibro(libro2);
+        prestamo2.setMiembro(miembro2);
+        prestamo2.setInicioPrestamo(LocalDate.now());
+        prestamo2.setFinPrestamo(LocalDate.now());
+
+        Prestamo prestamo3 = new Prestamo();
+        prestamo3.setLibro(libro3);
+        prestamo3.setMiembro(miembro3);
+        prestamo3.setInicioPrestamo(LocalDate.now());
+        prestamo3.setFinPrestamo(LocalDate.now());
+
+        biblioteca.getListaPrestamos().add(prestamo1);
+        biblioteca.getListaPrestamos().add(prestamo2);
+        biblioteca.getListaPrestamos().add(prestamo3);
+
+
 
         return biblioteca;
     }
