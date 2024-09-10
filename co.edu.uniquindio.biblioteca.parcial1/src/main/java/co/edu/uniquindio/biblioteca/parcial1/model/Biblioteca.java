@@ -130,4 +130,24 @@ public class Biblioteca implements ImiembroCrud {
             return false;
         }
     }
+    @Override
+    public boolean actualizarMiembro(int id, String nombreNuevo, int idNuevo, int edadNueva) {
+        Miembro miembroExistente = obtenerMiembro(id);
+        if(miembroExistente!=null){
+            miembroExistente.setNombre(nombreNuevo);
+            miembroExistente.setId(idNuevo);
+            miembroExistente.setEdad(edadNueva);
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    @Override
+    public List<Miembro> leerMiembros(List<Miembro> listaMiembros) {
+        for(Miembro miembro : listaMiembros){
+            return listaMiembros;
+        }
+
+    }
 }

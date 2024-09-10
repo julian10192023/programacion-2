@@ -5,6 +5,7 @@ import co.edu.uniquindio.biblioteca.parcial1.model.Biblioteca;
 import co.edu.uniquindio.biblioteca.parcial1.services.ImiembroCrud;
 
 import java.time.LocalDate;
+import java.util.List;
 
 public class ModelFactory implements ImiembroCrud {
 
@@ -37,6 +38,15 @@ public class ModelFactory implements ImiembroCrud {
     @Override
     public boolean eliminarMiembro(int id) {
         return biblioteca.eliminarMiembro(id);
+    }
+    @Override
+    public boolean actualizarMiembro(int id, String nombreNuevo, int idNuevo, int edadNueva) {
+        return biblioteca.actualizarMiembro(id, nombreNuevo, idNuevo, edadNueva);
+    }
+
+    @Override
+    public List<Miembro> leerMiembros(List<Miembro>listaMiembros) {
+        return biblioteca.leerMiembros(listaMiembros);
     }
 
     private void inicializarDatos() {

@@ -1,6 +1,9 @@
 package co.edu.uniquindio.biblioteca.parcial1;
 
 import co.edu.uniquindio.biblioteca.parcial1.factory.ModelFactory;
+import co.edu.uniquindio.biblioteca.parcial1.model.Miembro;
+
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
@@ -23,6 +26,8 @@ public class Main {
     private static void crudMiembro(ModelFactory modelFactory) {
         crearMiembro(modelFactory);
         eliminarMiembro(modelFactory);
+        actualizarMiembro(modelFactory);
+        leerMiembros(modelFactory);
     }
     private static void crearMiembro(ModelFactory modelFactory) {
         String nombre = "JULIAN";
@@ -35,6 +40,19 @@ public class Main {
         int id = 00000000;
         boolean resultado = modelFactory.eliminarMiembro(id);
         notificacion(resultado, " eliminado ");
+    }
+    private static void actualizarMiembro(ModelFactory modelFactory) {
+        int id= 1235445;
+        String nombreNuevo = "JHON";
+        int idNuevo = 4404221;
+        int edadNueva = 43;
+        boolean resultado = modelFactory.actualizarMiembro(id,nombreNuevo,idNuevo,edadNueva);
+        notificacion(resultado, " actualizado ");
+
+    }
+    private static void leerMiembros(ModelFactory modelFactory) {
+        List<Miembro> miembros = modelFactory.leerMiembros()
+        System.out.println();
     }
     private static void notificacion(boolean resultado, String mensaje) {
         if (resultado == true) {

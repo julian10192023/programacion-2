@@ -5,11 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c5fff161-b51d-4574-80e9-9835a3d6f626" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/biblioteca/parcial1/services/ImiembroCrud.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/biblioteca/parcial1/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/biblioteca/parcial1/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/biblioteca/parcial1/factory/ModelFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/biblioteca/parcial1/factory/ModelFactory.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/biblioteca/parcial1/model/Biblioteca.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/biblioteca/parcial1/model/Biblioteca.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/biblioteca/parcial1/services/ImiembroCrud.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/biblioteca/parcial1/services/ImiembroCrud.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,7 +45,7 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "dev-programacion2",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/ASUS/Documents/PROGRAMACION/PROGRAMACION II/programacion-2/co.edu.uniquindio.biblioteca.parcial1/src/main/java/co/edu/uniquindio/biblioteca/parcial1/model",
+    "last_opened_file_path": "C:/Users/ASUS/Documents/PROGRAMACION/PROGRAMACION II/patrones_creacionales",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -84,7 +84,7 @@
       <option name="presentableId" value="Default" />
       <updated>1725948717285</updated>
       <workItem from="1725948718478" duration="2336000" />
-      <workItem from="1725990657019" duration="6204000" />
+      <workItem from="1725990657019" duration="10697000" />
     </task>
     <servers />
   </component>
