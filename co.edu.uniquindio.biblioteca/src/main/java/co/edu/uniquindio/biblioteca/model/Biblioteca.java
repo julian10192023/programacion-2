@@ -80,7 +80,7 @@ public class Biblioteca {
         }
     }
 
-    public void buscarMiembro(List<Miembro>listaMiembros) {
+    public void buscarMiembro() {
         int buscarId = 100019244;
         for(Miembro miembros  : listaMiembros){
             if(miembros.getId()==buscarId){
