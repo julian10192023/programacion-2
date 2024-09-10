@@ -81,15 +81,17 @@ public class Biblioteca {
     }
 
     public void buscarMiembro() {
-        int buscarId = 100019244;
+        boolean encontrado = false;
+        int buscarId = 1000192445;
         for(Miembro miembros  : listaMiembros){
             if(miembros.getId()==buscarId){
                 System.out.println("MIEMBRO ENCONTRADO: "+"\n" + miembros);
+                encontrado = true;
                 break;
             }
-            else {
-                System.out.println("MIEMBRO NO ENCONTRADO");
-            }
         }
+        if(!encontrado)
+            System.out.println("MIEMBRO NO ENCONTRADO");
+
     }
 }
