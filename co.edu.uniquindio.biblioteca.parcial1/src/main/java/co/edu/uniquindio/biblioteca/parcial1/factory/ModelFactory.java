@@ -2,10 +2,11 @@ package co.edu.uniquindio.biblioteca.parcial1.factory;
 
 import co.edu.uniquindio.biblioteca.parcial1.model.*;
 import co.edu.uniquindio.biblioteca.parcial1.model.Biblioteca;
+import co.edu.uniquindio.biblioteca.parcial1.services.ImiembroCrud;
 
 import java.time.LocalDate;
 
-public class ModelFactory {
+public class ModelFactory implements ImiembroCrud {
 
     private static ModelFactory modelFactory;
     private Biblioteca biblioteca;
@@ -28,6 +29,16 @@ public class ModelFactory {
     public void buscarMiembro() {
         biblioteca.buscarMiembro();
     }
+    @Override
+    public boolean crearMiembro(String nombre, int id, int edad) {
+        return biblioteca.crearMiembro(nombre, id, edad);
+    }
+
+    @Override
+    public boolean eliminarMiembro(int id) {
+        return biblioteca.eliminarMiembro(id);
+    }
+
     private void inicializarDatos() {
         biblioteca = new Biblioteca();
         Libro libro1 = new Libro();
@@ -104,5 +115,6 @@ public class ModelFactory {
         biblioteca.getListaPrestamos().add(prestamo2);
         biblioteca.getListaPrestamos().add(prestamo3);
     }
+
 }
 

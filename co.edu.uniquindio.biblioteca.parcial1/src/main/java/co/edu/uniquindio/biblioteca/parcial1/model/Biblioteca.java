@@ -1,9 +1,11 @@
 package co.edu.uniquindio.biblioteca.parcial1.model;
 
+import co.edu.uniquindio.biblioteca.parcial1.services.ImiembroCrud;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class Biblioteca {
+public class Biblioteca implements ImiembroCrud {
     private String nombre;
     private List<Libro>listaLibros = new ArrayList();
     private  List<Miembro>listaMiembros = new ArrayList();
@@ -93,5 +95,39 @@ public class Biblioteca {
         if(!encontrado)
             System.out.println("MIEMBRO NO ENCONTRADO");
 
+    }
+    @Override
+    public boolean crearMiembro(String nombre, int id, int edad) {
+        Miembro miembroExistente = obtenerMiembro(id);
+        if(miembroExistente==null){
+            Miembro miembro1 = new Miembro();
+            miembro1.setNombre(nombre);
+            miembro1.setId(id);
+            miembro1.setEdad(edad);
+            getListaMiembros().add(miembro1);
+            return true;
+        } else{
+            return false;
+        }
+    }
+    private Miembro obtenerMiembro(int id) {
+        Miembro miembroExistente = null;
+        for(Miembro miembro : getListaMiembros()){
+            if(miembro.getId()==id){
+                miembroExistente = miembro;
+                break;
+            }
+        }
+        return miembroExistente;
+    }
+    @Override
+    public boolean eliminarMiembro(int id) {
+        Miembro miembroExistente = obtenerMiembro(id);
+        if(miembroExistente!=null){
+            getListaMiembros().remove(miembroExistente);
+            return true;
+        }else{
+            return false;
+        }
     }
 }
