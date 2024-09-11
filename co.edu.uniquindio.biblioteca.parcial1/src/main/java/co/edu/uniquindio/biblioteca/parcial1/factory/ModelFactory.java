@@ -2,12 +2,14 @@ package co.edu.uniquindio.biblioteca.parcial1.factory;
 
 import co.edu.uniquindio.biblioteca.parcial1.model.*;
 import co.edu.uniquindio.biblioteca.parcial1.model.Biblioteca;
+import co.edu.uniquindio.biblioteca.parcial1.services.IlibroCrud;
 import co.edu.uniquindio.biblioteca.parcial1.services.ImiembroCrud;
 
 import java.time.LocalDate;
 import java.util.List;
 
-public class ModelFactory implements ImiembroCrud {
+
+public class ModelFactory implements ImiembroCrud, IlibroCrud {
 
     private static ModelFactory modelFactory;
     private Biblioteca biblioteca;
@@ -21,6 +23,14 @@ public class ModelFactory implements ImiembroCrud {
         }
         return modelFactory;
     }
+
+    public Biblioteca getBiblioteca() {
+        return biblioteca;
+    }
+    public void setBiblioteca(Biblioteca biblioteca) {
+        this.biblioteca = biblioteca;
+    }
+
     public void mostrarDisponiblidadLibro(){
         biblioteca.mostrarDisponiblidadLibro();
     }
@@ -48,59 +58,59 @@ public class ModelFactory implements ImiembroCrud {
     public List<Miembro> leerMiembros(List<Miembro>listaMiembros) {
         return biblioteca.leerMiembros(listaMiembros);
     }
+    @Override
+    public boolean crearLibro(String titulo, String autor, String isbn,boolean prestado) {
+        return biblioteca.crearLibro(titulo, autor, isbn, prestado);
+    }
 
     private void inicializarDatos() {
         biblioteca = new Biblioteca();
-        Libro libro1 = new Libro();
-        libro1.setTitulo("CIEN AÑOS DE SOLEDAD");
-        libro1.setAutor("Gabriel García Márquez");
-        libro1.setIsbn("978-958-42-7450-2");
-        libro1.setPrestado(true);
-        Libro libro2 = new Libro();
-        libro2.setTitulo("El olvido que seremos");
-        libro2.setAutor("Héctor Abad Faciolince");
-        libro2.setIsbn(" 978-958-5457-60-6");
-        libro2.setPrestado(false);
-        Libro libro3 = new Libro();
-        libro3.setTitulo("Delirio");
-        libro3.setAutor("Laura Restrepo");
-        libro3.setIsbn("978-958-704-267-1");
-        libro3.setPrestado(false);
-        Libro libro4 = new Libro();
-        libro4.setTitulo("La vorágine");
-        libro4.setAutor("José Eustasio Rivera");
-        libro4.setIsbn("978-958-38-0215-3");
-        libro4.setPrestado(true);
-        Libro libro5 = new Libro();
-        libro5.setTitulo("Rosario Tijeras");
-        libro5.setAutor("Jorge Franco");
-        libro5.setIsbn("978-958-704-993-9");
-        libro5.setPrestado(true);
+        Libro libro1 = Libro.builder()
+                .titulo("CIEN AÑOS DE SOLEDAD")
+                .autor("Gabriel García Márquez")
+                .isbn("978-958-42-7450-2")
+                .prestado(true).build();
+        Libro libro2 = Libro.builder()
+                .titulo("")
+                .autor("")
+                .isbn("")
+                .prestado(false).build();
+        Libro libro3 = Libro.builder().titulo("Cien años de soledad")
+                .autor("Gabriel García Márquez")
+                .isbn(" 978-958-5457-60-6")
+                .prestado(true).build();
+        Libro libro4 = Libro.builder().titulo("La vorágine")
+                .autor("Gabriel García Márquez")
+                .isbn("78-958-38-0215-3")
+                .prestado(false).build();
+        Libro libro5 = Libro.builder().titulo("Rosario Tijeras")
+                .autor("Jorge Franco")
+                .isbn("978-958-704-993-9")
+                .prestado(true).build();
         biblioteca.getListaLibros().add(libro1);
         biblioteca.getListaLibros().add(libro2);
         biblioteca.getListaLibros().add(libro3);
         biblioteca.getListaLibros().add(libro4);
         biblioteca.getListaLibros().add(libro5);
-        Miembro miembro1 = new Miembro();
-        miembro1.setNombre("julian");
-        miembro1.setId(1000192445);
-        miembro1.setEdad(25);
-        Miembro miembro2 = new Miembro();
-        miembro2.setNombre("andy");
-        miembro2.setId(1235445);
-        miembro2.setEdad(25);
-        Miembro miembro3 = new Miembro();
-        miembro3.setNombre("camilo");
-        miembro3.setId(867537909);
-        miembro3.setEdad(35);
-        Miembro miembro4 = new Miembro();
-        miembro4.setNombre("juliana");
-        miembro4.setId(123);
-        miembro4.setEdad(42);
-        Miembro miembro5 = new Miembro();
-        miembro5.setNombre("camila");
-        miembro5.setId(30975325);
-        miembro5.setEdad(50);
+        Miembro miembro1 = Miembro.builder()
+                .nombre("julian")
+                .id(1000192445)
+                .edad(25).build();
+        Miembro miembro2 = Miembro.builder()
+                .nombre("andy")
+                .id(1235445)
+                .edad(25).build();
+        Miembro miembro3 = Miembro.builder()
+                .nombre("camilo")
+                .id(867537909)
+                .edad(35).build();
+        Miembro miembro4 = Miembro.builder()
+                .nombre("juliana")
+                .id(123)
+                .edad(42).build();
+        Miembro miembro5 =Miembro.builder().nombre("camila")
+                .id(30975325)
+                .edad(50).build();
         biblioteca.getListaMiembros().add(miembro1);
         biblioteca.getListaMiembros().add(miembro2);
         biblioteca.getListaMiembros().add(miembro3);
@@ -125,6 +135,5 @@ public class ModelFactory implements ImiembroCrud {
         biblioteca.getListaPrestamos().add(prestamo2);
         biblioteca.getListaPrestamos().add(prestamo3);
     }
-
 }
 

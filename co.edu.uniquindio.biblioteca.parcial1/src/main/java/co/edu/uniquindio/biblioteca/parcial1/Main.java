@@ -13,7 +13,9 @@ public class Main {
         //mostarMiembrosMayores(modelFactory);
         //buscarMiembro(modelFactory);
         crudMiembro(modelFactory);
+        crudLibro(modelFactory);
     }
+
     private static void mostrarDisponiblidadLibro(ModelFactory modelFactory) {
         modelFactory.mostrarDisponiblidadLibro();
     }
@@ -34,12 +36,12 @@ public class Main {
         int id = 1005159227;
         int edad = 18;
         boolean resultado = modelFactory.crearMiembro(nombre, id, edad);
-        notificacion(resultado, " creado ");
+        notificacionMiembro(resultado, " creado ");
     }
     private static void eliminarMiembro(ModelFactory modelFactory) {
         int id = 00000000;
         boolean resultado = modelFactory.eliminarMiembro(id);
-        notificacion(resultado, " eliminado ");
+        notificacionMiembro(resultado, " eliminado ");
     }
     private static void actualizarMiembro(ModelFactory modelFactory) {
         int id= 1235445;
@@ -47,18 +49,37 @@ public class Main {
         int idNuevo = 4404221;
         int edadNueva = 43;
         boolean resultado = modelFactory.actualizarMiembro(id,nombreNuevo,idNuevo,edadNueva);
-        notificacion(resultado, " actualizado ");
-
+        notificacionMiembro(resultado, " actualizado ");
     }
     private static void leerMiembros(ModelFactory modelFactory) {
-        List<Miembro> miembros = modelFactory.leerMiembros()
-        System.out.println();
+        List<Miembro> miembros = modelFactory.getBiblioteca().getListaMiembros();
+        modelFactory.leerMiembros(miembros);
     }
-    private static void notificacion(boolean resultado, String mensaje) {
+
+    private static void crudLibro(ModelFactory modelFactory) {
+        crearLibro(modelFactory);
+    }
+    private static void crearLibro(ModelFactory modelFactory) {
+        String titulo = "MAGIA NEGRA";
+        String autor = "JUAN PABLO";
+        String isbn = "10101010";
+        boolean prestado = true;
+        boolean resultado = modelFactory.crearLibro(titulo, autor, isbn, prestado);
+        notificacionLibro(resultado, " creado ");
+    }
+
+    private static void notificacionMiembro(boolean resultado, String mensaje) {
         if (resultado == true) {
             System.out.println("Miembro" + mensaje + "con exito");
         } else {
             System.out.println("Miembro NO" + mensaje + "porque no existe");
+        }
+    }
+    private static void notificacionLibro(boolean resultado, String mensaje) {
+        if (resultado == true) {
+            System.out.println("Libro" + mensaje + "con exito");
+        } else {
+            System.out.println("libro NO" + mensaje + "porque no existe");
         }
     }
 }

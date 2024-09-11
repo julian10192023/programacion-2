@@ -16,25 +16,17 @@ public class Miembro {
         this.id = id;
         this.edad = edad;
     }
+    public static MiembroBuilder builder(){return  new MiembroBuilder();}
+
     public String getNombre() {
         return nombre;
-    }
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
     }
 
     public int getId() {
         return id;
     }
-
-    public void setId(int id) {
-        this.id = id;
-    }
     public int getEdad() {
         return edad;
-    }
-    public void setEdad(int edad) {
-        this.edad = edad;
     }
     @Override
     public String toString() {

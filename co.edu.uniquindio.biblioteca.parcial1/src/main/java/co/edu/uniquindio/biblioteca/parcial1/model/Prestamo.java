@@ -16,30 +16,37 @@ public class Prestamo {
         this.inicioPrestamo = inicioPrestamo;
         this.finPrestamo = finPrestamo;
     }
+
+    public static Prestamo builder() {
+        return new Prestamo();
+    }
+
     public Libro getLibro() {
         return libro;
-    }
-    public void setLibro(Libro libro) {
-        this.libro = libro;
     }
     public Miembro getMiembro() {
         return miembro;
     }
-    public void setMiembro(Miembro miembro) {
-        this.miembro = miembro;
-    }
     public LocalDate getInicioPrestamo() {
         return inicioPrestamo;
     }
+
+    public void setLibro(Libro libro) {
+        this.libro = libro;
+    }
+
+    public void setMiembro(Miembro miembro) {
+        this.miembro = miembro;
+    }
+
     public void setInicioPrestamo(LocalDate inicioPrestamo) {
         this.inicioPrestamo = inicioPrestamo;
     }
-    public LocalDate getFinPrestamo() {
-        return finPrestamo;
-    }
+
     public void setFinPrestamo(LocalDate finPrestamo) {
         this.finPrestamo = finPrestamo;
     }
+
     @Override
     public String toString() {
         return "Prestamo{" +
