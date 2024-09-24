@@ -46,6 +46,9 @@ public class Prestamo {
     public void setFinPrestamo(LocalDate finPrestamo) {
         this.finPrestamo = finPrestamo;
     }
+    public LocalDate getFinPrestamo() {
+        return finPrestamo;
+    }
 
     @Override
     public String toString() {

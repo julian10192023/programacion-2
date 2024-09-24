@@ -3,16 +3,17 @@ package co.edu.uniquindio.biblioteca.parcial1.model;
 import co.edu.uniquindio.biblioteca.parcial1.services.IlibroCrud;
 import co.edu.uniquindio.biblioteca.parcial1.services.ImiembroCrud;
 
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Biblioteca implements ImiembroCrud, IlibroCrud {
     private String nombre;
-    private List<Libro>listaLibros = new ArrayList();
-    private  List<Miembro>listaMiembros = new ArrayList();
-    private List<Prestamo>listaPrestamos = new ArrayList();
-    private List<Empleado>listaEmpleados = new ArrayList();
-    private List<Bibliotecario>listaBibliotecarios = new ArrayList();
+    private List<Libro> listaLibros = new ArrayList();
+    private List<Miembro> listaMiembros = new ArrayList();
+    private List<Prestamo> listaPrestamos = new ArrayList();
+    private List<Empleado> listaEmpleados = new ArrayList();
+    private List<Bibliotecario> listaBibliotecarios = new ArrayList();
 
     public Biblioteca() {
     }
@@ -67,18 +68,18 @@ public class Biblioteca implements ImiembroCrud, IlibroCrud {
 
     public void mostrarDisponiblidadLibro() {
         for (Libro libro : listaLibros) {
-            if (libro.isPrestado()==true){
-                System.out.println(libro.getTitulo()+ ":" + "\n" + "NO ESTA DISPONIBLE");
-            }
-            else{
+            if (libro.isPrestado() == true) {
+                System.out.println(libro.getTitulo() + ":" + "\n" + "NO ESTA DISPONIBLE");
+            } else {
                 System.out.println(libro.getTitulo() + ":" + "\n" + "ESTA DISPONIBLE");
             }
         }
     }
+
     public void mostarMiembrosMayores() {
-        for(Miembro miembro : listaMiembros){
-            if(miembro.getEdad()>40){
-                System.out.println("MIEMBRO MAYOR DE 40 AÑOS:"+"\n" + miembro);
+        for (Miembro miembro : listaMiembros) {
+            if (miembro.getEdad() > 40) {
+                System.out.println("MIEMBRO MAYOR DE 40 AÑOS:" + "\n" + miembro);
             }
         }
     }
@@ -86,67 +87,83 @@ public class Biblioteca implements ImiembroCrud, IlibroCrud {
     public void buscarMiembro() {
         boolean encontrado = false;
         int buscarId = 1000192445;
-        for(Miembro miembros  : listaMiembros){
-            if(miembros.getId()==buscarId){
-                System.out.println("MIEMBRO ENCONTRADO: "+"\n" + miembros);
+        for (Miembro miembros : listaMiembros) {
+            if (miembros.getId() == buscarId) {
+                System.out.println("MIEMBRO ENCONTRADO: " + "\n" + miembros);
                 encontrado = true;
                 break;
             }
         }
-        if(!encontrado)
+        if (!encontrado)
             System.out.println("MIEMBRO NO ENCONTRADO");
 
     }
+
     @Override
     public boolean crearMiembro(String nombre, int id, int edad) {
         Miembro miembroExistente = obtenerMiembro(id);
-        if(miembroExistente==null){
+        if (miembroExistente == null) {
             Miembro miembro = Miembro.builder()
                     .nombre(nombre)
                     .id(id)
                     .edad(edad).build();
             getListaMiembros().add(miembro);
             return true;
-        } else{
+        } else {
             return false;
         }
     }
+
     private Miembro obtenerMiembro(int id) {
         Miembro miembroExistente = null;
-        for(Miembro miembro : getListaMiembros()){
-            if(miembro.getId()==id){
+        for (Miembro miembro : getListaMiembros()) {
+            if (miembro.getId() == id) {
                 miembroExistente = miembro;
                 break;
             }
         }
         return miembroExistente;
     }
+
+    private Libro obtenerLibro(String isbn) {
+        Libro libroExistente = null;
+        for (Libro libro : getListaLibros()) {
+            if (libro.getIsbn().equals(isbn)) {
+                libroExistente = libro;
+                break;
+            }
+        }
+        return libroExistente;
+    }
+
     @Override
     public boolean eliminarMiembro(int id) {
         Miembro miembroExistente = obtenerMiembro(id);
-        if(miembroExistente!=null){
+        if (miembroExistente != null) {
             getListaMiembros().remove(miembroExistente);
             return true;
-        }else{
+        } else {
             return false;
         }
     }
+
     @Override
     public boolean actualizarMiembro(int id, String nombreNuevo, int idNuevo, int edadNueva) {
         Miembro miembroExistente = obtenerMiembro(id);
-        if(miembroExistente!=null){
+        if (miembroExistente != null) {
             Miembro.builder()
                     .nombre(nombreNuevo)
                     .id(id)
                     .edad(edadNueva).build();
             return true;
-        }else{
+        } else {
             return false;
         }
     }
+
     @Override
-    public List<Miembro> leerMiembros(List<Miembro>listaMiembros) {
-        for(Miembro miembro : listaMiembros){
+    public List<Miembro> leerMiembros(List<Miembro> listaMiembros) {
+        for (Miembro miembro : listaMiembros) {
             System.out.println(miembro);
         }
         return listaMiembros;
@@ -154,6 +171,29 @@ public class Biblioteca implements ImiembroCrud, IlibroCrud {
 
     @Override
     public boolean crearLibro(String titulo, String autor, String isbn, boolean prestado) {
-        return false;
+        Libro libroExistente = obtenerLibro(isbn);
+        if (libroExistente == null) {
+            Libro libro6 = Libro.builder()
+                    .titulo("")
+                    .autor("")
+                    .isbn("")
+                    .prestado(false).build();
+            getListaLibros().add(libro6);
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    @Override
+    public boolean mostrarLibros(List<Libro> listaLibros) {
+        if (listaLibros.isEmpty()) {
+            System.out.println("la lista esta vacia");
+            return false;
+        } else {
+            for (Libro libro : listaLibros) {
+                System.out.println(libro);
+            }
+        }return true;
     }
 }

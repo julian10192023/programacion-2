@@ -14,12 +14,23 @@ public class Libro {
         this.isbn = isbn;
         this.prestado = prestado;
     }
+
     public static LibroBuilder builder(){
-        return new LibroBuilder();}
+        return new LibroBuilder();
+    }
 
     public String getTitulo() {
         return titulo;
     }
+
+    public String getAutor() {
+        return autor;
+    }
+
+    public String getIsbn() {
+        return isbn;
+    }
+
     @Override
     public String toString() {
         return "Libro{" +
@@ -29,6 +40,7 @@ public class Libro {
                 ", prestado=" + prestado +
                 '}';
     }
+
     public boolean isPrestado() {
         return prestado;
     }

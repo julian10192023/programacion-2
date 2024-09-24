@@ -1,19 +1,26 @@
 package co.edu.uniquindio.biblioteca.parcial1;
 
 import co.edu.uniquindio.biblioteca.parcial1.factory.ModelFactory;
+import co.edu.uniquindio.biblioteca.parcial1.model.Biblioteca;
+import co.edu.uniquindio.biblioteca.parcial1.model.Libro;
 import co.edu.uniquindio.biblioteca.parcial1.model.Miembro;
 
 import java.util.List;
 
 public class Main {
+    private static List<Libro> libro;
+
     public static void main(String[] args) {
 
         ModelFactory modelFactory = ModelFactory.getInstance();
         //mostrarDisponiblidadLibro(modelFactory);
         //mostarMiembrosMayores(modelFactory);
-        //buscarMiembro(modelFactory);
-        crudMiembro(modelFactory);
+        //buscarMiembro(modelFactory/);
+        //crudMiembro(modelFactory);
         crudLibro(modelFactory);
+    }
+
+    private static void crearRevista(ModelFactory modelFactory) {
     }
 
     private static void mostrarDisponiblidadLibro(ModelFactory modelFactory) {
@@ -25,11 +32,12 @@ public class Main {
     private static void buscarMiembro(ModelFactory modelFactory) {
         modelFactory.buscarMiembro();
     }
+    //CRUD PARA LA CLASE MIEMBRO
     private static void crudMiembro(ModelFactory modelFactory) {
         crearMiembro(modelFactory);
         eliminarMiembro(modelFactory);
         actualizarMiembro(modelFactory);
-        leerMiembros(modelFactory);
+        mostrarMiembros(modelFactory);
     }
     private static void crearMiembro(ModelFactory modelFactory) {
         String nombre = "JULIAN";
@@ -38,10 +46,9 @@ public class Main {
         boolean resultado = modelFactory.crearMiembro(nombre, id, edad);
         notificacionMiembro(resultado, " creado ");
     }
-    private static void eliminarMiembro(ModelFactory modelFactory) {
-        int id = 00000000;
-        boolean resultado = modelFactory.eliminarMiembro(id);
-        notificacionMiembro(resultado, " eliminado ");
+    private static void mostrarMiembros(ModelFactory modelFactory) {
+        List<Miembro> miembros = modelFactory.getBiblioteca().getListaMiembros();
+        modelFactory.leerMiembros(miembros);
     }
     private static void actualizarMiembro(ModelFactory modelFactory) {
         int id= 1235445;
@@ -51,13 +58,22 @@ public class Main {
         boolean resultado = modelFactory.actualizarMiembro(id,nombreNuevo,idNuevo,edadNueva);
         notificacionMiembro(resultado, " actualizado ");
     }
-    private static void leerMiembros(ModelFactory modelFactory) {
-        List<Miembro> miembros = modelFactory.getBiblioteca().getListaMiembros();
-        modelFactory.leerMiembros(miembros);
+    private static void eliminarMiembro(ModelFactory modelFactory) {
+        int id = 00000000;
+        boolean resultado = modelFactory.eliminarMiembro(id);
+        notificacionMiembro(resultado, " eliminado ");
     }
-
+    private static void notificacionMiembro(boolean resultado, String mensaje) {
+        if (resultado == true) {
+            System.out.println("Miembro" + mensaje + "con exito");
+        } else {
+            System.out.println("Miembro NO" + mensaje + "porque no existe");
+        }
+    }
+    //CRUD PARA LA CLASE LIBRO
     private static void crudLibro(ModelFactory modelFactory) {
         crearLibro(modelFactory);
+        mostrarlibros(modelFactory);
     }
     private static void crearLibro(ModelFactory modelFactory) {
         String titulo = "MAGIA NEGRA";
@@ -67,14 +83,13 @@ public class Main {
         boolean resultado = modelFactory.crearLibro(titulo, autor, isbn, prestado);
         notificacionLibro(resultado, " creado ");
     }
+    private static void mostrarlibros(ModelFactory modelFactory) {
+        boolean resultado = modelFactory.getBiblioteca().mostrarLibros(libro);
+        System.out.println(libro);
 
-    private static void notificacionMiembro(boolean resultado, String mensaje) {
-        if (resultado == true) {
-            System.out.println("Miembro" + mensaje + "con exito");
-        } else {
-            System.out.println("Miembro NO" + mensaje + "porque no existe");
-        }
+        //List<ModelFactory>libros=modelFactory.mostrarLibros();
     }
+
     private static void notificacionLibro(boolean resultado, String mensaje) {
         if (resultado == true) {
             System.out.println("Libro" + mensaje + "con exito");

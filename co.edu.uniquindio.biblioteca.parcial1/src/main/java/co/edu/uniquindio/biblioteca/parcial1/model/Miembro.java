@@ -7,7 +7,7 @@ public class Miembro {
     private String nombre;
     private int id;
     private int edad;
-    private List<Prestamo>ListaPrestamosAsociados = new ArrayList<Prestamo>();
+    private List<Prestamo> ListaPrestamosAsociados = new ArrayList<Prestamo>();
 
     public Miembro() {
     }
@@ -16,7 +16,9 @@ public class Miembro {
         this.id = id;
         this.edad = edad;
     }
-    public static MiembroBuilder builder(){return  new MiembroBuilder();}
+    public static MiembroBuilder builder(){
+        return new MiembroBuilder();
+    }
 
     public String getNombre() {
         return nombre;
@@ -25,15 +27,22 @@ public class Miembro {
     public int getId() {
         return id;
     }
+
     public int getEdad() {
         return edad;
     }
+
+    public List<Prestamo> getListaPrestamosAsociados() {
+        return ListaPrestamosAsociados;
+    }
+
     @Override
     public String toString() {
         return "Miembro{" +
                 "nombre='" + nombre + '\'' +
                 ", id=" + id +
                 ", edad=" + edad +
+                ", ListaPrestamosAsociados=" + ListaPrestamosAsociados +
                 '}';
     }
 }

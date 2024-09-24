@@ -9,7 +9,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 
-public class ModelFactory implements ImiembroCrud, IlibroCrud {
+public class ModelFactory implements ImiembroCrud, IlibroCrud{
 
     private static ModelFactory modelFactory;
     private Biblioteca biblioteca;
@@ -44,23 +44,25 @@ public class ModelFactory implements ImiembroCrud, IlibroCrud {
     public boolean crearMiembro(String nombre, int id, int edad) {
         return biblioteca.crearMiembro(nombre, id, edad);
     }
-
-    @Override
-    public boolean eliminarMiembro(int id) {
-        return biblioteca.eliminarMiembro(id);
-    }
-    @Override
-    public boolean actualizarMiembro(int id, String nombreNuevo, int idNuevo, int edadNueva) {
-        return biblioteca.actualizarMiembro(id, nombreNuevo, idNuevo, edadNueva);
-    }
-
     @Override
     public List<Miembro> leerMiembros(List<Miembro>listaMiembros) {
         return biblioteca.leerMiembros(listaMiembros);
     }
     @Override
+    public boolean actualizarMiembro(int id, String nombreNuevo, int idNuevo, int edadNueva) {
+        return biblioteca.actualizarMiembro(id, nombreNuevo, idNuevo, edadNueva);
+    }
+    @Override
+    public boolean eliminarMiembro(int id) {
+        return biblioteca.eliminarMiembro(id);
+    }
+    @Override
     public boolean crearLibro(String titulo, String autor, String isbn,boolean prestado) {
         return biblioteca.crearLibro(titulo, autor, isbn, prestado);
+    }
+    @Override
+    public boolean mostrarLibros(List<Libro> listaLibros) {
+        return biblioteca.mostrarLibros(listaLibros);
     }
 
     private void inicializarDatos() {
@@ -108,7 +110,8 @@ public class ModelFactory implements ImiembroCrud, IlibroCrud {
                 .nombre("juliana")
                 .id(123)
                 .edad(42).build();
-        Miembro miembro5 =Miembro.builder().nombre("camila")
+        Miembro miembro5 =Miembro.builder()
+                .nombre("camila")
                 .id(30975325)
                 .edad(50).build();
         biblioteca.getListaMiembros().add(miembro1);
@@ -134,6 +137,8 @@ public class ModelFactory implements ImiembroCrud, IlibroCrud {
         biblioteca.getListaPrestamos().add(prestamo1);
         biblioteca.getListaPrestamos().add(prestamo2);
         biblioteca.getListaPrestamos().add(prestamo3);
+
+        //Revista revista1 = Revista.builder().
     }
 }
 
