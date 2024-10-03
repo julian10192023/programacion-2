@@ -1,17 +1,31 @@
 package co.edu.uniquindio.PatronAbstractFactory;
 
+import co.edu.uniquindio.PatronAbstractFactory.fabricas.FabricaVehiculoElectrico;
+import co.edu.uniquindio.PatronAbstractFactory.fabricas.FabricaVehiculoGasolina;
+import co.edu.uniquindio.PatronAbstractFactory.fabricas.IfabricaVehiculo;
+import co.edu.uniquindio.PatronAbstractFactory.services.Iauto;
+import co.edu.uniquindio.PatronAbstractFactory.services.Imoto;
+
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+        //crear fabrica de vehiculos electricos
+        IfabricaVehiculo fabricaElectrica = new FabricaVehiculoElectrico();
+        Iauto autoElectrico = fabricaElectrica.crearAuto();
+        Imoto motoElectrica = fabricaElectrica.crearMoto();
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
-        }
+        //usar los vehiculos electricos
+        autoElectrico.conducir();
+        motoElectrica.conducir();
+
+        //CREAR UNA FABRICA DE VEHICULOS A GASOLINA
+        IfabricaVehiculo fabricaGasolina = new FabricaVehiculoGasolina();
+        Iauto autoGasolina = fabricaGasolina.crearAuto();
+        Imoto motoGasolina = fabricaGasolina.crearMoto();
+
+        //USAR LOS VEHICULOS A GASOLINA
+        autoGasolina.conducir();
+        motoGasolina.conducir();
     }
 }
